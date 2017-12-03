@@ -1,0 +1,19 @@
+{
+    "fast_open": true,
+    "local_address": "127.0.0.1",
+    "method": "chacha20",
+    "obfs": "plain",
+    "obfs_param": "",
+    "port_password": {
+        "8394": "nagiZip!",
+        "8395": "Uber!dx",
+        "8396": "Face@dpi",
+        "8397": "HHappy59tu",
+        "8398": "X62p!eeb7"
+    },
+    "protocol": "origin",
+    "protocol_param": "",
+    "server": "::",
+    "timeout": 600,
+    "workers": 3
+}

@@ -1,0 +1,19 @@
+{
+    "fast_open": true,
+    "local_address": "127.0.0.1",
+    "method": "aes-128-cfb",
+    "obfs": "plain",
+    "obfs_param": "",
+    "port_password": {
+        "8894": "nagiZip!",
+        "8895": "Uber!dx",
+        "8896": "Face@dpi",
+        "8897": "HHappy59tu",
+        "8898": "X62p!eeb7"
+    },
+    "protocol": "origin",
+    "protocol_param": "",
+    "server": "::",
+    "timeout": 600,
+    "workers": 3
+}
