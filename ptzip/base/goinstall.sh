@@ -79,4 +79,4 @@ echo "Tip: Opening a new terminal window usually just works. :)"
 rm -f /tmp/go.tar.gz
 
 source /root/.bashrc
-bash
+#bash
