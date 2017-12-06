@@ -1,0 +1,12 @@
+FROM aarch64/ubuntu
+RUN apt-get update -y && apt-get install -y software-properties-common curl  wget rsync dialog apt-utils && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y git mosh bash zsh && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y proxychains lrzsz iproute axel htop iftop socat net-tools unzip p7zip-full  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y python python3 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y python-pip python3-pip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y vnstat && rm -rf /var/lib/apt/lists/* && vnstat -u -i eth0 && /etc/init.d/vnstat start
+
+
+RUN apt-get update -y && apt-get install -y build-essential  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y golang  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y speedtest-cli && rm -rf /var/lib/apt/lists/*
