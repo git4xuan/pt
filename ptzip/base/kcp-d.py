@@ -58,5 +58,23 @@ if(ret==0):
 else:
     print("Dante-server install Failed!!")
 
-## copy dante config file...
+## cat dante config file...
+os.system('''
+cat << EOF > /etc/danted.conf
+logoutput: syslog
+internal: 127.0.0.1 port = 10000
+external: eth0
+method: none
+user.privileged: proxy
+user.notprivileged: nobody
+user.libwrap: nobody
+client pass {
+ from: 127.0.0.0/8 port 1-65535 to: 0.0.0.0/0
+}
+pass {
+ from: 127.0.0.0/8 to: 0.0.0.0/0
+ protocol: tcp udp
+}
+EOF
+''')
 
