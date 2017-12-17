@@ -2,7 +2,7 @@
     "fast_open": true,
     "local_address": "127.0.0.1",
     "method": "aes-256-cfb",
-    "obfs": "plain",
+    "obfs": "http_simple",
     "obfs_param": "",
     "port_password": {
         "8894": "nagiZip!",
