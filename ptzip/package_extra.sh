@@ -45,7 +45,7 @@ install_apt_extra(){
 }
 
 install_python_pip3(){
-    wget https://bootstrap.pypa.io/get-pip.py
+    [ ! -f get-pip.py ] && wget https://bootstrap.pypa.io/get-pip.py
     chmod +x get-pip.py
     python3 get-pip.py
 }

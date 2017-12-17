@@ -21,8 +21,9 @@ fi
 echo ${release}
 
 install_yum_base(){
-    yum install -y wget epel-release
+    yum install -y wget epel-release vim nano
     yum install -y curl iproute axel htop iftop socat net-tools unzip rsync bash git
+    yum install -y python
     yum install -y lrzsz python34
     yum install -y vnstat
     yum install -y mosh
@@ -35,7 +36,8 @@ install_yum_base(){
 }
 install_apt_base(){
     apt-get install -y iproute2 curl axel htop iftop socat net-tools unzip rsync bash git wget
-    apt-get install -y software-properties-common dialog
+    apt-get install -y software-properties-common dialog vim nano
+    apt-get install -y python
     apt-get install -y lrzsz mosh
     apt-get install -y proxychains vnstat chkconfig
     ufw disable
@@ -48,7 +50,7 @@ install_apt_base(){
 }
 
 install_python_pip(){
-    wget https://bootstrap.pypa.io/get-pip.py
+    [ ! -f get-pip.py ] && wget https://bootstrap.pypa.io/get-pip.py
     chmod +x get-pip.py
     python get-pip.py
 }
