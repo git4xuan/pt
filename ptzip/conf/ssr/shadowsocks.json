@@ -1,15 +1,15 @@
 {
     "fast_open": true,
     "local_address": "127.0.0.1",
-    "method": "chacha20-ietf",
+    "method": "chacha20",
     "obfs": "http_simple",
     "obfs_param": "",
     "port_password": {
 	"8394": {"password":"nagiZip!","protocol":"auth_chain_b","obfs":"http_post"},
         "8395": {"password":"Uber!dx","protocol":"auth_chain_b","obfs":"tls1.2_ticket_auth"},
         "8396": {"password":"Face@dpi","protocol":"auth_aes128_md5"},
-        "8397": {"password":"HHappy59tu","method":"chacha20"},
-        "8398": {"password":"X62p!eeb7","obfs":"plain"}
+        "8397": {"password":"HHappy59tu","obfs":"plain"},
+        "8398": {"password":"X62p!eeb7","obfs":"http_post"}
     },
     "protocol": "origin",
     "protocol_param": "",
