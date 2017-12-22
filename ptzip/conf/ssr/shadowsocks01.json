@@ -5,15 +5,15 @@
     "obfs": "http_simple",
     "obfs_param": "",
     "port_password": {
-        "8894": "nagiZip!",
-        "8895": "Uber!dx",
-        "8896": "Face@dpi",
-        "8897": "HHappy59tu",
-        "8898": "X62p!eeb7"
+	"8894": {"password":"nagiZip!","protocol":"auth_chain_b","obfs":"http_post"},
+        "8895": {"password":"Uber!dx","protocol":"auth_chain_b","obfs":"tls1.2_ticket_auth"},
+        "8896": {"password":"Face@dpi","protocol":"auth_aes128_md5"},
+        "8897": {"password":"HHappy59tu"},
+        "8898": {"password":"X62p!eeb7","obfs":"tls1.2_ticket_auth"}
     },
     "protocol": "origin",
     "protocol_param": "",
     "server": "::",
-    "timeout": 600,
+    "timeout": 300,
     "workers": 3
 }
