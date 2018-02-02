@@ -83,6 +83,10 @@ install_docker(){
     curl -sSL https://get.docker.com/ | sh
 }
 
+install_fdt(){
+    bash base/fdt_install.sh
+}
+
 if [[ "${release}" == "centos" ]]; then
        yum_force_ipv4
        install_yum_extra
@@ -90,6 +94,7 @@ if [[ "${release}" == "centos" ]]; then
        install_oh_my_zsh
        install_sys_swap
        install_docker
+       install_fdt
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
        [[ ! -e "/usr/bin/wget" ]] && apt-get -y update && apt-get -y install wget
        apt_force_ipv4
@@ -98,6 +103,7 @@ if [[ "${release}" == "centos" ]]; then
        install_oh_my_zsh
        install_sys_swap
        install_docker
+       install_fdt
     else
         echo -e "Error:OS is not be supported, please change to CentOS/Debian/Ubuntu and try again."
         exit 1
