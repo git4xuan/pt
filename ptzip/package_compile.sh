@@ -43,6 +43,10 @@ install_apt_compile(){
     apt-get install  -y build-essential
 }
 
+install_apt_java(){
+    apt-get install -y default-jdk
+}
+
 install_go_amd64(){
 ##install golang-tools
     bash base/goinstall.sh --64
