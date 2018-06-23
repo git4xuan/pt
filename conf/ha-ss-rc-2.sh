@@ -1,5 +1,5 @@
 #!/bin/bash
-ip='45.79.89.168'
+ip='d.dlink.bid'
 tag='/tmp/ssr/sc'
 lnum=9500
 onum=8894
