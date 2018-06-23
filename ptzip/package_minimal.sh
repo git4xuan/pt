@@ -40,6 +40,7 @@ install_apt_base(){
     apt-get install -y python
     apt-get install -y lrzsz mosh
     apt-get install -y proxychains vnstat chkconfig
+    apt-get install -y privoxy
     ufw disable
     systemctl disable ufw
     ## vnstat
