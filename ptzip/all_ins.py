@@ -25,7 +25,5 @@ for tmp in L:
     print(process_number)
 
 # change loc
-os.chdir("base")
-os.system("python kcp-d.py ")
 
 
