@@ -65,7 +65,7 @@ install_yum_deluge(){
     deluged >> /tmp/deluged.log 2>&1  
 }
 
-install_apt_deluge(){
+install_apt_deluge_failed(){
     add-apt-repository -y ppa:deluge-team/ppa
     apt-get update -y
     apt-get install -y deluged deluge-web deluge-console
@@ -74,6 +74,16 @@ install_apt_deluge(){
     rsync -avrP conf/deluge/* ~/.config/deluge/
     deluged >> /tmp/deluged.log 2>&1 
 }
+
+install_apt_deluge(){
+    apt-get update -y
+    apt-get install -y deluged deluge-web deluge-console
+    pip install boost
+    mkdir -p ~/.config/deluge
+    rsync -avrP conf/deluge/* ~/.config/deluge/
+    deluged >> /tmp/deluged.log 2>&1
+}
+
 
 apt_force_ipv4(){
     echo "Acquire::ForceIPv4 \"true\";" >> /etc/apt/apt.conf.d/99force-ipv4
