@@ -3,7 +3,6 @@
 
 import os
 import sys
-import commands
 
 process_number=0
 ori=os.getcwd() ## loc exec
