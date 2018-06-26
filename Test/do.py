@@ -69,10 +69,27 @@ class Linodes:
         return source_id
 
     def getNewNodeIP(self):
-        pass
+        s, t = subprocess.getstatusoutput("linode-cli linodes list")
+        source_id = -1
+        newNodeIP = " "
+        if (s == 0):
+            tDict = {}
+            tList = []
+            dt = json.loads(t)
+            if (type(dt) == type(tDict)):
+                print("There is no new nodes id..")
+            elif (type(dt) == type(tList)):
+                newNodeIP = dt[1]["ipv4"][0]
+            else:
+                print("There is problem in linode-cli output")
+        return newNodeIP
 
     def deleteOldNodes(self):
-        pass
+        if (self.source_id == -1):
+            return -1
+        else:
+            s, t = subprocess.getstatusoutput("linode-cli linodes delete " + str(self.source_id) + " --json --pretty")
+            return s
 
     def getDomainIP(self):
         pass
@@ -91,7 +108,4 @@ class Linodes:
         pass
 
 if __name__ == "__main__":
-
-
-
-
+    pass
