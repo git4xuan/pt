@@ -10,21 +10,38 @@ import json
 
 
 class Linodes(self,domain=None):
+    def __init__(self):
+        self.source_id = self.getOldNodeId()
+        self.target_id = self.getNewNodeId()
+
+
     def getOldNodeId(self):
         pass
-    def getDomainIP(self):
-        pass
+
+
+
     def getNewNodeIP(self):
         pass
+
+    def getNewNodeId(self):
+        pass
+
     def deleteOldNodes(self):
         pass
+
     def createNewNodes(self):
         ##By clone
         pass
-    def changeDomainIP(self):
+
+    def getDomainIP(self):
         pass
+
+    def updateDomainIP(self):
+        pass
+
     def checkIPAvailable(self):
         pass
+
     def ssClientRestart(self):
         pass
 
