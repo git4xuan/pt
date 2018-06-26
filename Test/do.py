@@ -9,7 +9,7 @@ import subprocess
 import json
 
 
-class Linodes(self,domain=None):
+class Linodes:
     def __init__(self):
         self.source_id = self.getOldNodeId()
         self.target_id = self.getNewNodeId()
@@ -18,14 +18,20 @@ class Linodes(self,domain=None):
     def getOldNodeId(self):
         s, t = subprocess.getstatusoutput("linode-cli linodes list --json --pretty")
         source_id = -1
-        if (s1 == 0):
+        if (s == 0):
             tDict = {}
             tList = []
-            dt1 = json.loads(t1)
-            if (type(dt1) == type(tDict)):
-                source_id = dt1["id"]
-            elif (type(dt1) == type(tList)):
-                source_id = dt1[0]["id"]
+            dt = json.loads(t)
+            if (type(dt) == type(tDict)):
+                source_id = dt["id"]
+            elif (type(dt) == type(tList)):
+                source_id = dt[0]["id"]
+                ## 有bug，需要ip校验，先不管
+            dt = json.loads(t)
+            if (type(dt) == type(tDict)):
+                source_id = dt["id"]
+            elif (type(dt) == type(tList)):
+                source_id = dt[0]["id"]
                 ## 有bug，需要ip校验，先不管
             else:
                 print("There is problem in linode-cli output")
@@ -39,6 +45,7 @@ class Linodes(self,domain=None):
         else:
             s, t = subprocess.getstatusoutput("linode-cli linodes clone " + str(self.source_id) + " --json --pretty")
             return 0
+
     def bootNewNodes(self):
         if (self.target_id == -1):
             return -1
@@ -46,17 +53,26 @@ class Linodes(self,domain=None):
             s, t = subprocess.getstatusoutput("linode-cli linodes boot " + str(self.target_id) + " --json --pretty")
             return s
 
-
     def getNewNodeId(self):
-        pass
+        s, t = subprocess.getstatusoutput("linode-cli linodes list")
+        source_id = -1
+        if (s == 0):
+            tDict = {}
+            tList = []
+            dt = json.loads(t)
+            if (type(dt) == type(tDict)):
+                print("There is no new nodes id..")
+            elif (type(dt) == type(tList)):
+                source_id = dt[1]["id"]
+            else:
+                print("There is problem in linode-cli output")
+        return source_id
 
     def getNewNodeIP(self):
         pass
 
     def deleteOldNodes(self):
         pass
-
-
 
     def getDomainIP(self):
         pass
@@ -75,39 +91,7 @@ class Linodes(self,domain=None):
         pass
 
 if __name__ == "__main__":
-    s1,t1 = subprocess.getstatusoutput("linode-cli linodes list")
-    if(s1 == 0):
-        tDict = {}
-        tList = []
-        dt1 = json.loads(t1)
-        if(type(dt1) == type(tDict)):
-            source_id = dt1["id"]
-        elif(type(dt1) == type(tList)):
-            source_id = dt1[0]["id"]
-            ## 有bug，需要ip校验，先不管
-        else:
-            print("There is problem in linode-cli output")
-
-        s2,t2 = subprocess.getstatusoutput("linode-cli linodes clone " + str(source_id))
-        if(s2 == 0):
-            dt2 = json.loads(t2)
-            ## we need to new_ip as return data
-            print("linodes clone will start...")
-            s3, t3 = subprocess.getstatusoutput("linode-cli linodes list")
-            dt3 = json.loads(t3)
-            dest_id = dt3[1]["id"]
-            _ , _ = subprocess.getstatusoutput("linode-cli linodes boot " + str(dest_id))
-            dest_ip = dt3[1]["ip"]
-            print("dest_ip is:" + dest_ip)
-        else:
-            print("linodes clone failed..")
 
 
 
 
-
-
-
-
-
-        #s3,t3 = subprocess.getstatusoutput("cli4 update")
