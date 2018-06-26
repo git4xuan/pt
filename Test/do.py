@@ -91,7 +91,9 @@ class Linodes:
             s, t = subprocess.getstatusoutput("linode-cli linodes delete " + str(self.source_id) + " --json --pretty")
             return s
 
-    def getDomainIP(self):
+    def getDomainIP(self):  # unused..
+
+
         pass
 
     def updateDomainIP(self):
