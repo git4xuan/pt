@@ -44,7 +44,7 @@ class Linodes:
             return -1
         else:
             s, t = subprocess.getstatusoutput("linode-cli linodes clone " + str(self.source_id) + " --json --pretty")
-            return 0
+            return s
 
     def bootNewNodes(self):
         if (self.target_id == -1):
@@ -99,15 +99,28 @@ class Linodes:
     def updateDomainIP(self):
         pass
 
-    def checkIPAvailable(self):
+    def checkSSRPortIsAvailable(self):
         pass
 
-    def ssClientRestart(self):
-        pass
+    def updateSSRClient(self):
+        s, t = subprocess.getstatusoutput("bash /usr/local/ha-ss-rc.sh")
+        return s
 
+    @property
     def updateSSRServer(self):
-        # exec all actions...
+        bSignal = -1
+        cSignal = self.createNewNodes()
+        if(cSignal == -1):
+            print("Error..")
+        elif(cSignal == 0):
+            print("creatNewNodes succeed.")
+            bSignal = self.bootNewNodes()
+        else:
+            print("Unknown Error..")
+        #return bSignal
+        # if IP addr is available.
         pass
 
 if __name__ == "__main__":
-    pass
+        pt = Linodes()
+        pt.updateSSRServer()

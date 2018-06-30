@@ -1,7 +1,7 @@
 FROM ustclug/ubuntu
 ENV user="tcs_git4xuan"
 ENV password="password"
-RUN apt-get update -y && apt-get install -y software-properties-common  wget python python3 git rsync dialog apt-utils && apt-get install python3-pip -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y software-properties-common  wget python python3 git rsync dialog apt-utils && apt-get install python3-pip nmap -y && rm -rf /var/lib/apt/lists/*
 RUN pip3 install --upgrade pip
 COPY do.py /tmp/
 RUN pip3 install linode
