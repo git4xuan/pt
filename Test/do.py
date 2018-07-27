@@ -21,7 +21,7 @@ class Linodes:
         if (s == 0):
             tDict = {}
             tList = []
-            dt = json.loads(t)
+            dt = json.loads(str(t))
             if (type(dt) == type(tDict)):
                 source_id = dt["id"]
             elif (type(dt) == type(tList)):
@@ -36,7 +36,8 @@ class Linodes:
             else:
                 print("There is problem in linode-cli output")
         else:
-            print("list error....")
+            print("list error..." + str(s))
+            print("t is: " + t)
         return source_id
 
     def createNewNodes(self): ## By clone
@@ -106,7 +107,7 @@ class Linodes:
         s, t = subprocess.getstatusoutput("bash /usr/local/ha-ss-rc.sh")
         return s
 
-    @property
+
     def updateSSRServer(self):
         bSignal = -1
         cSignal = self.createNewNodes()
@@ -119,8 +120,11 @@ class Linodes:
             print("Unknown Error..")
         #return bSignal
         # if IP addr is available.
-        pass
+        print("update ssr."+ str(bSignal) + str(cSignal))
+        return 0
 
 if __name__ == "__main__":
         pt = Linodes()
+        print("As we can get more details")
+
         pt.updateSSRServer()
