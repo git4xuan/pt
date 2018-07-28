@@ -1,7 +1,7 @@
 FROM ustclug/ubuntu
 ENV user="tcs_git4xuan"
 #ENV password="password"
-
+ENV password="U9ic3uKtp7YG"
 RUN apt-get update -y && apt-get install -y software-properties-common  wget python python3 git rsync dialog apt-utils && apt-get install python3-pip nmap -y && rm -rf /var/lib/apt/lists/*
 RUN wget https://tuna.moe/oh-my-tuna/oh-my-tuna.py && python oh-my-tuna.py
 RUN pip3 install --upgrade pip
@@ -23,5 +23,5 @@ RUN apt-get update -y && apt-get install -y bash zsh && rm -rf /var/lib/apt/list
 COPY ./docker-entrypoint.sh /
 COPY do.py /tmp/
 CMD /bin/sh /docker-entrypoint.sh
-CMD /bin/echo "++++++++"
 ENTRYPOINT /bin/bash
+
